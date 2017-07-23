@@ -16,7 +16,6 @@ typedef struct {
 }Input;
 
 bool compare(Input a, Input b){
-
 	int x = strcmp(a.cor, b.cor);//compara a cor
 
 	if(x > 0)//verifica qual é antecessor
@@ -30,7 +29,7 @@ bool compare(Input a, Input b){
 			return false;
 
 		if(!x){
-
+			//nesse caso se forem iguais quero que sejam trocados
 			x = strcasecmp(a.nome, b.nome);
 			return x > 0 ? false : true;
 		}
@@ -53,12 +52,12 @@ int main(){
 
 		for(int i = 0; i < n; i++){
 
-			gets(in[i].nome);
+			gets(in[i].nome);//pega o nome ate o fim da linha
 			scanf("%s %c", in[i].cor, &in[i].t);
-			getchar();
+			getchar();//limpa o buffer (dizem que eh mais recomendavel q o fflush em maratonas)
 		}
 		sort(in, in + n, compare);
-		for_each(in, in + n, print);
+		for_each(in, in + n, print);//percorre todo o vetor e chama a função print passando cada elemento do vetor
 		
 		scanf("%d\n", &n);
 		if(!n) break;
